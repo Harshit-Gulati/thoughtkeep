@@ -14,7 +14,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: false,
+    origin: "https://thoughtkeep.vercel.app",
   })
 );
 app.use(express.json());
