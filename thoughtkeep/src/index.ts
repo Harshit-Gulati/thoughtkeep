@@ -14,8 +14,9 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["https://thoughtkeep.vercel.app"],
-    methods: ["POST", "GET", "DELETE"],
+    methods: ["POST", "GET", "DELETE", "OPTIONS"],
     credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
