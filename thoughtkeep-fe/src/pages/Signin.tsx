@@ -28,7 +28,7 @@ export const Signin = () => {
           username,
           password,
         },
-        { withCredentials: true }
+        { withCredentials: false }
       );
       const jwt = res.data.token;
       localStorage.setItem("token", jwt);
