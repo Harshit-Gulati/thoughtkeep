@@ -10,15 +10,16 @@ import { random } from "./utils";
 import cors from "cors";
 
 const app = express();
-app.use(
-  cors({
-    origin: ["https://thoughtkeep.vercel.app"],
-    methods: ["POST", "GET", "DELETE", "OPTIONS"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-app.use(express.json());
+app.use(cors()); 
+app.use(express.json()); 
+
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "https://thoughtkeep.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.status(200).end();
+});
 
 app.post(
   "/api/v1/signup",
