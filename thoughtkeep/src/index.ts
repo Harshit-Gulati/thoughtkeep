@@ -10,13 +10,12 @@ import { random } from "./utils";
 import cors from "cors";
 
 const app = express();
-
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://thoughtkeep.vercel.app",
-  })
-);
+const corsOptions = {
+  credentials: true,
+  origin: "https://thoughtkeep.vercel.app",
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.post(
