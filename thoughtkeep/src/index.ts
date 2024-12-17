@@ -12,10 +12,10 @@ import cors from "cors";
 const app = express();
 app.use(
   cors({
-    origin: "*",
-    methods: "*",
-    allowedHeaders: "*",
-    credentials: false,
+    origin: "https://thoughtkeep.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 app.use(express.json());
