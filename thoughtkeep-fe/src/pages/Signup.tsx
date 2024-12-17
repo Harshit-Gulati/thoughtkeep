@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-axios.defaults.withCredentials = true;
 
 export const Signup = () => {
   const usernameRef = useRef<HTMLInputElement>();

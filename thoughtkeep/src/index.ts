@@ -11,7 +11,12 @@ import cors from "cors";
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: false,
+  })
+);
 app.use(express.json());
 
 app.post(

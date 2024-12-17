@@ -10,7 +10,6 @@ import { loginAtom } from "../store/loginAtom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-
 export const Signin = () => {
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
@@ -23,10 +22,14 @@ export const Signin = () => {
     const username = usernameRef.current?.value;
     const password = passwordRef.current?.value;
     try {
-      const res = await axios.post(`${BACKEND_URL}/api/v1/signin`, {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        `${BACKEND_URL}/api/v1/signin`,
+        {
+          username,
+          password,
+        },
+        { withCredentials: true }
+      );
       const jwt = res.data.token;
       localStorage.setItem("token", jwt);
       localStorage.setItem("share", "false");
