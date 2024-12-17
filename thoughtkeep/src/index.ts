@@ -10,7 +10,6 @@ import { random } from "./utils";
 import cors from "cors";
 
 const app = express();
-app.use(express.json());
 app.use(
   cors({
     origin: ["https://thoughtkeep.vercel.app"],
@@ -19,6 +18,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+app.use(express.json());
 
 app.post(
   "/api/v1/signup",
