@@ -62,17 +62,20 @@ app.post(
     });
 
     if (existingUser) {
-      const token = jwt.sign(
-        {
-          id: existingUser._id,
-        },
-        //@ts-ignore
-        JWT_SECRET
-      );
-      res.status(200).json({
-        message: "LoggedIn successfully",
-        token,
-      });
+      const isMatch = await bcrypt.compare(password, existingUser.password);
+      if (isMatch) {
+        const token = jwt.sign(
+          {
+            id: existingUser._id,
+          },
+          //@ts-ignore
+          JWT_SECRET
+        );
+        res.status(200).json({
+          message: "LoggedIn successfully",
+          token,
+        });
+      }
     } else {
       res.status(403).json({
         message: "Incorrect credentials",

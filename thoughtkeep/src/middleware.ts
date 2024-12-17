@@ -29,7 +29,7 @@ export const validateUserInput = (
   next: NextFunction
 ) => {
   try {
-    // schema.parse(req.body);
+    schema.parse(req.body);
     next();
   } catch (error) {
     res.status(411).json({

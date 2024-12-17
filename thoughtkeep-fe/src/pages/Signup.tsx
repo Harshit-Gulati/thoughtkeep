@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-
 export const Signup = () => {
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
@@ -61,6 +60,13 @@ export const Signup = () => {
       <div className="bg-[#1A1D21] rounded-lg text-gray-100 shadow-md border border-purple-700 shadow-black/55 w-screen md:w-[40%] lg:w-[20%] min-h-48 p-6 text-lg">
         <Input reference={usernameRef} placeholder="Username" />
         <Input reference={passwordRef} placeholder="Password" />
+        <p className="text-xs lg:text-sm text-left text-gray-400 capitalize my-1">
+          *Username must be 3-10 characters long.
+        </p>
+        <p className="text-xs lg:text-sm text-left text-gray-400 mt-2 mb-4">
+          *Password Must Be 8-20 Characters Long And Contains One Uppercase, One
+          Lowercase And One Special Character.
+        </p>
         <div className="my-2">
           <Button
             variant="primary"

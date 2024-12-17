@@ -23,5 +23,3 @@ export const SidebarItem = ({
     </div>
   );
 };
-
-//TODO host, ss and tweet
