@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
+axios.defaults.withCredentials = true;
+
 export const Signup = () => {
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
@@ -48,7 +50,7 @@ export const Signup = () => {
       });
     }
   }
-  
+
   return (
     <div className="bg-[#0E1113] h-screen w-screen flex flex-col justify-center items-center">
       <span className="text-4xl font-semibold text-white tracking-tighter flex justify-center items-center pt-4 mb-6">

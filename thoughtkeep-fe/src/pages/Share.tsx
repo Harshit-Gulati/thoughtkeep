@@ -17,6 +17,8 @@ export const Share = () => {
   const [username, setUsername] = useState("");
   const { shareLink } = useParams();
 
+  axios.defaults.withCredentials = true;
+
   const fetchContents = async () => {
     try {
       const res = await axios.get(`${BACKEND_URL}/api/v1/brain/${shareLink}`);
