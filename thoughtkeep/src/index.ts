@@ -19,6 +19,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+// aioiauofhuiafoa
 
 app.post(
   "/api/v1/signup",
