@@ -17,7 +17,7 @@ import { ShareIcon } from "../../icons/ShareIcon";
 import { useContent } from "../../hooks/useContent";
 import { loginAtom } from "../../store/loginAtom";
 
-const APP_URL = import.meta.env.APP_URL;
+const APP_URL = import.meta.env.VITE_APP_URL;
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const Sidebar = () => {
