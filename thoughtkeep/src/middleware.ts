@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { z } from "zod";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import * as dotenv from "dotenv";
-dotenv.config();
+// import * as dotenv from "dotenv";
+// dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 const schema = z.object({
