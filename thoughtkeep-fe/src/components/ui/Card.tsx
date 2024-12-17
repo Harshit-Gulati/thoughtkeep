@@ -12,7 +12,7 @@ export interface CardProps {
   title: string;
   link: string;
   type: "twitter" | "youtube";
-  id: string;
+  _id: string;
 }
 
 export const Card = (props: CardProps) => {
@@ -86,7 +86,7 @@ export const Card = (props: CardProps) => {
             </div>
             <span
               className="cursor-pointer hover:text-red-700"
-              onClick={() => removeThought(props.id)}
+              onClick={() => removeThought(props._id)}
             >
               <TrashIcon size="lg" />
             </span>

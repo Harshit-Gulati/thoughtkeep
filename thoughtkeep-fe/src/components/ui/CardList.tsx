@@ -12,7 +12,7 @@ export const CardList = () => {
             type={card.type}
             link={card.link}
             title={card.title}
-            id={card._id}
+            _id={card._id}
           />
         </div>
       ))}
