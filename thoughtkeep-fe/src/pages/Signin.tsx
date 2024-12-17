@@ -10,7 +10,6 @@ import { loginAtom } from "../store/loginAtom";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-axios.defaults.withCredentials = true;
 
 export const Signin = () => {
   const usernameRef = useRef<HTMLInputElement>();
