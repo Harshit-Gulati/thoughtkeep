@@ -16,7 +16,13 @@ export const Share = () => {
   const [contents, setContents] = useRecoilState(contentsAtom);
   const [username, setUsername] = useState("");
   const { shareLink } = useParams();
+<<<<<<< HEAD
   axios.defaults.withCredentials = true;
+=======
+
+  axios.defaults.withCredentials = true;
+
+>>>>>>> 76feebd (fourth commit)
   const fetchContents = async () => {
     try {
       const res = await axios.get(`${BACKEND_URL}/api/v1/brain/${shareLink}`);
