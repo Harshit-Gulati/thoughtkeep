@@ -21,9 +21,11 @@ export const Card = (props: CardProps) => {
   async function removeThought(id: string) {
     try {
       await axios.delete(`${BACKEND_URL}/api/v1/content`, {
-        data: { contentId: id },
         headers: {
           Authorization: localStorage.getItem("token"),
+        },
+        data: {
+          contentId: id,
         },
       });
       toast.success("Content deleted!", {
@@ -37,7 +39,7 @@ export const Card = (props: CardProps) => {
         theme: "colored",
       });
       setContents((prevContents) =>
-        prevContents.filter((card: any) => String(card._id) !== id)
+        prevContents.filter((card: CardProps) => String(card._id) !== id)
       );
     } catch (e) {
       console.error(e);

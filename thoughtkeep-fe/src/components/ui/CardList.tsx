@@ -1,9 +1,9 @@
 import { useRecoilValue } from "recoil";
-import { Card } from "./Card";
+import { Card, CardProps } from "./Card";
 import { contentsAtom } from "../../store/contentsAtom";
 
 export const CardList = () => {
-  const cardData: any = useRecoilValue(contentsAtom);
+  const cardData: CardProps[] = useRecoilValue(contentsAtom);
   return (
     <>
       {cardData.map((card: any) => (

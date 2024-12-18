@@ -156,7 +156,7 @@ app.delete(
     try {
       await ContentModel.deleteOne({
         _id: contentId,
-        userId,
+        "userId._id": userId,
       });
 
       res.status(200).json({
