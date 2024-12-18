@@ -150,8 +150,10 @@ app.delete(
   "/api/v1/content",
   userMiddleware,
   async (req: Request, res: Response) => {
-    const contentId = req.body.contentId;
+    const contentId = req.query.contentId;
     const userId = req.userId;
+    console.log(userId);
+    console.log(contentId);
 
     try {
       await ContentModel.deleteOne({

@@ -24,7 +24,7 @@ export const Card = (props: CardProps) => {
         headers: {
           Authorization: localStorage.getItem("token"),
         },
-        data: {
+        params: {
           contentId: id,
         },
       });
