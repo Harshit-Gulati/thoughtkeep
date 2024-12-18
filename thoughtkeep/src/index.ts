@@ -150,7 +150,7 @@ app.delete(
   "/api/v1/content",
   userMiddleware,
   async (req: Request, res: Response) => {
-    const contentId = req.contentId;
+    const contentId = req.body.contentId;
     const userId = req.userId;
 
     try {
