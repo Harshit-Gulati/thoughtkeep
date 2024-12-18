@@ -3,8 +3,8 @@ import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { BrainIcon } from "../icons/BrainIcon";
 import { toast } from "react-toastify";
+import { Logo } from "../components/ui/Logo";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -23,7 +23,7 @@ export const Signup = () => {
         username,
         password,
       });
-      toast.success("Logged in!", {
+      toast.success("Signed Up!", {
         position: "top-center",
         autoClose: 3500,
         hideProgressBar: false,
@@ -36,7 +36,7 @@ export const Signup = () => {
       setIsLoading(false);
       navigate("/signin");
     } catch (e) {
-      toast.error("Error logging in!", {
+      toast.error("Error signing up!", {
         position: "top-center",
         autoClose: 3500,
         hideProgressBar: false,
@@ -51,15 +51,10 @@ export const Signup = () => {
 
   return (
     <div className="bg-[#0E1113] h-screen w-screen flex flex-col justify-center items-center">
-      <span className="text-4xl font-semibold text-white tracking-tighter flex justify-center items-center pt-4 mb-6">
-        <span className="mr-2">
-          <BrainIcon />
-        </span>
-        Thought<span className="text-purple-500">Keep</span>
-      </span>
+      <Logo style="sign" />
       <div className="bg-[#1A1D21] rounded-lg text-gray-100 shadow-md border border-purple-700 shadow-black/55 w-screen md:w-[40%] lg:w-[20%] min-h-48 p-6 text-lg">
-        <Input reference={usernameRef} placeholder="Username" />
-        <Input reference={passwordRef} placeholder="Password" />
+        <Input type="text" reference={usernameRef} placeholder="Username" />
+        <Input type="password" reference={passwordRef} placeholder="Password" />
         <p className="text-xs lg:text-sm text-left text-gray-400 capitalize my-1">
           *Username must be 3-10 characters long.
         </p>

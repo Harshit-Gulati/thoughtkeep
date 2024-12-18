@@ -1,5 +1,4 @@
 import { useRecoilState } from "recoil";
-import { BrainIcon } from "../icons/BrainIcon";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { contentsAtom } from "../store/contentsAtom";
@@ -9,6 +8,7 @@ import { TwitterIcon } from "../icons/TwitterIcon";
 import { OpenIcon } from "../icons/OpenIcon";
 import { Button } from "../components/ui/Button";
 import { toast } from "react-toastify";
+import { Logo } from "../components/ui/Logo";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -16,7 +16,6 @@ export const Share = () => {
   const [contents, setContents] = useRecoilState(contentsAtom);
   const [username, setUsername] = useState("");
   const { shareLink } = useParams();
-
 
   const fetchContents = async () => {
     try {
@@ -50,12 +49,7 @@ export const Share = () => {
     <div className="max-w-screen h-screen">
       <div className="w-full bg-[#0E1113] min-h-screen h-fit p-3">
         <div className="w-full h-20 md:h-10 flex flex-col md:flex-row justify-between items-center">
-          <span className="text-xl font-semibold text-white tracking-tighter flex justify-center items-center w-fit">
-            <span className="mr-2">
-              <BrainIcon />
-            </span>
-            Thought<span className="text-purple-500">Keep</span>
-          </span>
+          <Logo style="dash" />
           <div className="flex">
             <div className="rounded-3xl px-2 py-2 bg-gray-100 text-purple-700 border border-purple-700 font-semibold flex justify-center items-center mr-4 text-sm lg:text-base">{`${username}'s Brain`}</div>
             <Button

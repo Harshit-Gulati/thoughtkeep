@@ -1,7 +1,6 @@
 import { SidebarItem } from "./SidebarItem";
 import { TwitterIcon } from "../../icons/TwitterIcon";
 import { YoutubeIcon } from "../../icons/YoutubeIcon";
-import { BrainIcon } from "../../icons/BrainIcon";
 import { useNavigate } from "react-router-dom";
 import { sidebarAtom } from "../../store/sidebarAtom";
 import { CrossIcon } from "../../icons/CrossIcon";
@@ -16,6 +15,7 @@ import { PlusIcon } from "../../icons/PlusIcon";
 import { ShareIcon } from "../../icons/ShareIcon";
 import { useContent } from "../../hooks/useContent";
 import { loginAtom } from "../../store/loginAtom";
+import { Logo } from "./Logo";
 
 const APP_URL = import.meta.env.VITE_APP_URL;
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -159,12 +159,7 @@ export const Sidebar = () => {
         sidebarOpen ? `translate-x-0` : `-translate-x-full`
       }`}
     >
-      <span className="text-2xl font-semibold text-white tracking-tighter flex justify-center items-center pt-4">
-        <span className="mr-2">
-          <BrainIcon />
-        </span>
-        Thought<span className="text-purple-500">Keep</span>
-      </span>
+      <Logo style="side" />
       <div className="flex flex-col w-full items-center pt-20">
         <SidebarItem
           text="All"

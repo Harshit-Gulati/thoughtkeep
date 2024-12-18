@@ -3,10 +3,10 @@ import { Sidebar } from "../components/ui/Sidebar";
 import { CardList } from "../components/ui/CardList";
 import { sidebarAtom } from "../store/sidebarAtom";
 import { useRecoilState } from "recoil";
-import { BrainIcon } from "../icons/BrainIcon";
 import { HamburgerIcon } from "../icons/HamburgerIcon";
 import { useEffect } from "react";
 import { useContent } from "../hooks/useContent";
+import { Logo } from "../components/ui/Logo";
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useRecoilState(sidebarAtom);
@@ -28,13 +28,7 @@ export default function Dashboard() {
         <CreateContentModal />
         {!sidebarOpen && (
           <div className="w-full h-10 flex justify-between items-center">
-            <span className="text-xl font-semibold text-white tracking-tighter flex justify-center items-center w-fit">
-              <span className="mr-2">
-                <BrainIcon />
-              </span>
-              Thought<span className="text-purple-500">Keep</span>
-            </span>
-
+            <Logo style="dash" />
             <span
               className="flex justify-center items-center h-full text-white cursor-pointer hover:text-purple-500 transition-all"
               onClick={() => {

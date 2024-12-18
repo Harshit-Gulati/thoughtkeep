@@ -169,7 +169,6 @@ app.delete("/api/v1/content/:id", middleware_1.userMiddleware, (req, res) => __a
         }
         const response = yield db_1.ContentModel.deleteOne({
             _id: contentId,
-            // userId: { _id: userId },
         });
         res.status(200).json({
             response,
