@@ -20,12 +20,9 @@ export const Card = (props: CardProps) => {
 
   async function removeThought(id: string) {
     try {
-      await axios.delete(`${BACKEND_URL}/api/v1/content`, {
+      await axios.delete(`${BACKEND_URL}/api/v1/content/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token"),
-        },
-        params: {
-          contentId: id,
         },
       });
       toast.success("Content deleted!", {

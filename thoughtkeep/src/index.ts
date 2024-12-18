@@ -129,10 +129,7 @@ app.get(
       if (type) {
         filter.type = type;
       }
-      const content = await ContentModel.find(filter).populate(
-        "userId",
-        "username"
-      );
+      const content = await ContentModel.find(filter).populate("userId", "_id");
 
       res.json({
         content,
@@ -147,21 +144,22 @@ app.get(
 );
 
 app.delete(
-  "/api/v1/content",
+  "/api/v1/content/:id",
   userMiddleware,
   async (req: Request, res: Response) => {
-    const contentId = req.query.contentId;
+    const contentId = req.params.id;
     const userId = req.userId;
-    console.log(userId);
-    console.log(contentId);
 
     try {
-      await ContentModel.deleteOne({
+      if (!contentId) {
+        throw new Error("content not found!");
+      }
+      const response = await ContentModel.deleteOne({
         _id: contentId,
-        "userId._id": userId,
       });
 
       res.status(200).json({
+        response,
         message: "Deleted successfully",
       });
     } catch (e) {

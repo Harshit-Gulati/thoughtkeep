@@ -56,8 +56,13 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const utils_1 = require("./utils");
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
+const corsOptions = {
+    credentials: true,
+    origin: "https://thoughtkeep.vercel.app",
+};
+app.use((0, cors_1.default)(corsOptions));
+app.options("*", (0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
 app.post("/api/v1/signup", middleware_1.validateUserInput, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     try {
@@ -89,15 +94,18 @@ app.post("/api/v1/signin", middleware_1.validateUserInput, (req, res) => __await
         username,
     });
     if (existingUser) {
-        const token = jsonwebtoken_1.default.sign({
-            id: existingUser._id,
-        }, 
-        //@ts-ignore
-        JWT_SECRET);
-        res.status(200).json({
-            message: "LoggedIn successfully",
-            token,
-        });
+        const isMatch = yield bcrypt_1.default.compare(password, existingUser.password);
+        if (isMatch) {
+            const token = jsonwebtoken_1.default.sign({
+                id: existingUser._id,
+            }, 
+            //@ts-ignore
+            JWT_SECRET);
+            res.status(200).json({
+                message: "LoggedIn successfully",
+                token,
+            });
+        }
     }
     else {
         res.status(403).json({
@@ -140,7 +148,7 @@ app.get("/api/v1/content", middleware_1.userMiddleware, (req, res) => __awaiter(
         if (type) {
             filter.type = type;
         }
-        const content = yield db_1.ContentModel.find(filter).populate("userId", "username");
+        const content = yield db_1.ContentModel.find(filter).populate("userId", "_id");
         res.json({
             content,
         });
@@ -152,15 +160,19 @@ app.get("/api/v1/content", middleware_1.userMiddleware, (req, res) => __awaiter(
         return;
     }
 }));
-app.delete("/api/v1/content", middleware_1.userMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const contentId = req.contentId;
+app.delete("/api/v1/content/:id", middleware_1.userMiddleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const contentId = req.params.id;
     const userId = req.userId;
     try {
-        yield db_1.ContentModel.deleteOne({
-            contentId,
-            userId,
+        if (!contentId) {
+            throw new Error("content not found!");
+        }
+        const response = yield db_1.ContentModel.deleteOne({
+            _id: contentId,
+            // userId: { _id: userId },
         });
         res.status(200).json({
+            response,
             message: "Deleted successfully",
         });
     }
