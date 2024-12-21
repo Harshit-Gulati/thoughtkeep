@@ -15,6 +15,9 @@ thoughtkeep-fe/node_modules
 thoughtkeep-fe/.env
 thoughtkeep/.env
 
+#dist
+thoughtkeep/dist
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
