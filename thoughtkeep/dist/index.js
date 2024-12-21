@@ -63,6 +63,9 @@ const corsOptions = {
 app.use((0, cors_1.default)(corsOptions));
 app.options("*", (0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
+app.get("/api", (req, res) => {
+    res.status(200).json({ message: "OK" });
+});
 app.post("/api/v1/signup", middleware_1.validateUserInput, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { username, password } = req.body;
     try {
