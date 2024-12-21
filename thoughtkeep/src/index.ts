@@ -18,6 +18,10 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 app.use(express.json());
 
+app.get("/api", (req: Request, res: Response) => {
+  res.status(200).json({ message: "OK" });
+});
+
 app.post(
   "/api/v1/signup",
   validateUserInput,

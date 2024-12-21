@@ -57,6 +57,8 @@ export const Signin = () => {
         progress: undefined,
         theme: "colored",
       });
+    } finally {
+      setIsLoading(false);
     }
   }
 

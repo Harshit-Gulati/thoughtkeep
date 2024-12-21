@@ -17,6 +17,8 @@ thoughtkeep/.env
 
 #dist
 thoughtkeep/dist
+thoughtkeep-fe/dist
+
 
 # Editor directories and files
 .vscode/*
